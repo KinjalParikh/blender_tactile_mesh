@@ -40,7 +40,7 @@ for vertex in mesh.vertices:
         vertex_group.add([vertex.index], 1.0, 'REPLACE')
 
 # Load an image as a displacement map
-image_path = "png_files/dots.png"
+image_path = "png_files/grid.png"
 bpy.ops.image.open(filepath=image_path)
 image = bpy.data.images.load(image_path)
 
@@ -52,7 +52,7 @@ displace_modifier.texture = bpy.data.textures.new(name="Displace_Texture", type=
 displace_modifier.texture.image = image
 
 # Set up file output parameters
-output_path = "mesh_files/dots.obj"
+output_path = "mesh_files/grid.obj"
 
 # Export the mesh as an OBJ file
 bpy.ops.export_scene.obj(filepath=output_path, use_selection=True)
