@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200mm" height="200mm" viewBox="0 0 100 100">
+    <defs>
+        <pattern id="grid_pattern" width="5mm" height="5mm"
+         patternUnits="userSpaceOnUse" stroke="white" stroke-width="1.001mm">
+    <rect width="5mm" height="5mm" fill="black"/>
+    <line x1="2.5mm" y1="-0.5mm" x2="2.5mm" y2="5mm"/>
+    <line x1="-0.5mm" y1="2.5mm" x2="5mm" y2="2.5mm"/>
+    </pattern>
+    </defs>
+    <!-- Example of using the pattern as a fill -->
+    <rect x="0" y="0" width="200" height="200" fill="url(#grid_pattern)"/>
+</svg>

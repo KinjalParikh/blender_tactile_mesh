@@ -1,0 +1,13 @@
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="200mm" height="200mm" viewBox="0 0 100 100">
+    <defs>
+        <pattern id="dotted_pattern" width="2.5mm" height="2.5mm"
+         patternUnits="userSpaceOnUse" fill="white" stroke="none">
+    <rect width="2.5mm" height="2.5mm" fill="black"/>
+    <circle cx="1.25mm" cy="1.25mm" r="0.8mm"/>
+    </pattern>
+    </defs>
+    <!-- Example of using the pattern as a fill -->
+    <rect x="0" y="0" width="200" height="200" fill="url(#dotted_pattern)"/>
+</svg>
