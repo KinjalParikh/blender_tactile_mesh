@@ -56,14 +56,19 @@ def generate_mesh(image_path, output_path, size):
     # Set up file output parameters
     
     # Export the mesh as an OBJ file
-    bpy.ops.export_scene.obj(filepath=output_path, use_selection=True)
+    if output_path.endswith(".obj"):
+        print("Saving as OBJ")
+        bpy.ops.export_scene.obj(filepath=output_path, use_selection=True)
+    else:
+        print("Saving as STL")
+        bpy.ops.export_mesh.stl(filepath=output_path, use_selection=True)
 
 
 if __name__ == "__main__":
     args = sys.argv
 
     image_path = "png_files/grid.png" if args[4] is None else args[4]
-    output_path = "mesh_files/grid.obj" if args[5] is None else args[5]
+    output_path = "mesh_files/grid.stl" if args[5] is None else args[5]
     size = 25 if args[6] is None else int(args[6])
 
     generate_mesh(image_path, output_path, size)
