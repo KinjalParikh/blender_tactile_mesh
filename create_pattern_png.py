@@ -9,7 +9,7 @@ def create_lines(size, density):
     img = Image.new("RGB", (size, size), "black")
     draw = ImageDraw.Draw(img)
 
-    step = int((1-density)*size)
+    step = int((1-density)*size//2)
     for i in range(1, size, step):
         draw.line((0, i, size, i), fill="white")
 
@@ -24,7 +24,7 @@ def create_grid(size, density):
     img = Image.new("RGB", (size, size), "black")
     draw = ImageDraw.Draw(img)
 
-    step = int((1 - density) * size)
+    step = int((1 - density) * size//2)
     for i in range(1, size, step):
         draw.line((0, i, size, i), fill="white")
         draw.line((i, 0, i, size), fill="white")
@@ -36,7 +36,6 @@ def create_dots(size, density):
     file_name = "dots_size{}_density{}.png".format(size, density)
     out_dir = "./png_files/"
     opath = os.path.join(out_dir, file_name)
-    size *=2
 
     img = Image.new("RGB", (size, size), "black")
     draw = ImageDraw.Draw(img)
@@ -62,7 +61,7 @@ def create_png(size, density, pattern="lines"):
 
 
 if __name__ == "__main__":
-    size = 200
+    size = 400
     density = [0.85, 0.875, 0.9, 0.925, 0.95]
     pattern = ["lines", "grid", "dots"]
 

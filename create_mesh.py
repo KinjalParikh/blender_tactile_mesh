@@ -76,6 +76,6 @@ if __name__ == "__main__":
     for p in pattern:
         for d in density:
             print("Size: ", size, " Density: ", density, " Pattern: ", pattern)
-            image_path = "png_files/{}_size{}_density{}.png".format(p, 200, d)
+            image_path = "png_files/{}_size{}_density{}.png".format(p, 400, d)
             output_path = "mesh_files/{}_size{}_density{}.obj".format(p, size, d)
             generate_mesh(image_path, output_path, size)
