@@ -1,6 +1,4 @@
 import bpy
-import os
-import sys
 
 
 def generate_mesh(image_path, output_path, size):
@@ -65,10 +63,19 @@ def generate_mesh(image_path, output_path, size):
 
 
 if __name__ == "__main__":
-    args = sys.argv
+    # args = sys.argv
+    #
+    # image_path = "png_files/grid.png" if args[4] is None else args[4]
+    # output_path = "mesh_files/grid.stl" if args[5] is None else args[5]
+    # size = 25 if args[6] is None else int(args[6])
+    size = 50
+    density = [0.85, 0.875, 0.9, 0.925, 0.95]
+    pattern = ["lines", "grid", "dots"]
 
-    image_path = "png_files/grid.png" if args[4] is None else args[4]
-    output_path = "mesh_files/grid.stl" if args[5] is None else args[5]
-    size = 25 if args[6] is None else int(args[6])
-
-    generate_mesh(image_path, output_path, size)
+    print("Generating meshes")
+    for p in pattern:
+        for d in density:
+            print("Size: ", size, " Density: ", density, " Pattern: ", pattern)
+            image_path = "png_files/{}_size{}_density{}.png".format(p, 200, d)
+            output_path = "mesh_files/{}_size{}_density{}.obj".format(p, size, d)
+            generate_mesh(image_path, output_path, size)
