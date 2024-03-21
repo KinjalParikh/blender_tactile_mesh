@@ -69,13 +69,13 @@ if __name__ == "__main__":
     # output_path = "mesh_files/grid.stl" if args[5] is None else args[5]
     # size = 25 if args[6] is None else int(args[6])
     size = 50
-    density = [0.85, 0.875, 0.9, 0.925, 0.95]
+    density = [0.925+i*(0.05/6) for i in range(7)]
     pattern = ["lines", "grid", "dots"]
 
     print("Generating meshes")
     for p in pattern:
         for d in density:
             print("Size: ", size, " Density: ", density, " Pattern: ", pattern)
-            image_path = "png_files/{}_size{}_density{}.png".format(p, 400, d)
-            output_path = "mesh_files/{}_size{}_density{}.obj".format(p, size, d)
+            image_path = "png_files/{}_size{}_density{:.3f}.png".format(p, 400, d)
+            output_path = "mesh_files/{}_size{}_density{:.3f}.obj".format(p, size, d)
             generate_mesh(image_path, output_path, size)
