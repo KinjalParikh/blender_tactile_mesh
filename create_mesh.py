@@ -1,7 +1,7 @@
 import bpy
 
 
-def generate_mesh(image_path, output_path, size):
+def generate_mesh(image_path, output_path, size, pattern):
     # Set scene units to metric with millimeter units
     bpy.context.scene.unit_settings.system = 'METRIC'
     bpy.context.scene.unit_settings.length_unit = 'MILLIMETERS'
@@ -50,6 +50,9 @@ def generate_mesh(image_path, output_path, size):
     displace_modifier.vertex_group = vertex_group.name
     displace_modifier.texture = bpy.data.textures.new(name="Displace_Texture", type='IMAGE')
     displace_modifier.texture.image = image
+    # can adjust the strength of the displacement as needed
+    if pattern == "dots":
+        displace_modifier.strength = 0.5
     
     # Set up file output parameters
     
@@ -70,7 +73,7 @@ if __name__ == "__main__":
     # size = 25 if args[6] is None else int(args[6])
     size = 50
     density = [0.95+i*(0.025/6) for i in range(7)]
-    pattern = ["lines", "grid"] #, "dots"]
+    pattern = ["dots" ] #"lines", "grid"] #, "dots"]
 
     print("Generating meshes")
     for p in pattern:
@@ -78,4 +81,4 @@ if __name__ == "__main__":
             print("Size: ", size, " Density: ", density, " Pattern: ", pattern)
             image_path = "png_files/{}_size{}_density{:.3f}.png".format(p, 400, d)
             output_path = "mesh_files/{}_size{}_density{:.3f}.obj".format(p, size, d)
-            generate_mesh(image_path, output_path, size)
+            generate_mesh(image_path, output_path, size, p)

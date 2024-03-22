@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # density_old = [0.85, 0.875, 0.9, 0.925, 0.95]
     # density_new = [d/2 + 1/2 for d in density_old]
     density_list = [0.95+i*(0.025/6) for i in range(7)]
-    pattern_list = ["lines", "grid", "dots"]
+    pattern_list = ["dots"] #"lines", "grid", "dots"]
 
     print("Creating PNGs")
     for p in pattern_list:
