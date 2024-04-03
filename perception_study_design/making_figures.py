@@ -29,7 +29,9 @@ result_files_lines = [
     'responses_20240328095845_Blaine',
     'responses_20240328104853_Zhecheng',
     'responses_20240329122126_Victor',
-    'responses_20240329180546_Selena'
+    'responses_20240401160400_Fengyuan',
+    'responses_20240401165655_Jessi',
+    'responses_20240402172543_Karthik'
 ]
 
 thresholds = []
@@ -90,6 +92,8 @@ plt.figure(figsize=(8, 6))
 cmap = plt.get_cmap('tab10')
 colors = cmap.colors[:len(thresholds)]
 labels = ['P'+str(i+1) for i in range(len(thresholds))]
+x_left_array = []
+x_right_array = []
 
 for i in range(len(thresholds)):
     threshold = thresholds[i]
@@ -101,6 +105,14 @@ for i in range(len(thresholds)):
     cdf = norm.cdf(x, loc=threshold, scale=sigma)
     adjusted_cdf = (1 - 2*lapse_rate) * cdf + lapse_rate
 
+    # x_left = last x value where cdf < 0.2
+    # x_right = first x value where cdf > 0.8
+    x_left = x[np.where(cdf < 0.2)[0][-1]]
+    x_right = x[np.where(cdf > 0.8)[0][0]]
+    x_left_array.append(x_left)
+    x_right_array.append(x_right)
+    print('P' + str(i+1) + ' x_left: ' + str(x_left) + ' x_right: ' + str(x_right))
+
     plt.plot(stimuli_array, data_array_means[i], 'o', color=colors[i], label=labels[i])
     plt.plot(x, adjusted_cdf, color=colors[i])
 
@@ -110,3 +122,6 @@ plt.ylabel('Percentage of "more dense" responses')
 plt.legend()
 plt.grid(True)
 plt.show()
+
+print("x_left_mean: " + str(np.mean(x_left_array)))
+print("x_right_mean: " + str(np.mean(x_right_array)))

@@ -14,7 +14,7 @@ data format = 70 trials
 {"trial": [6, 4], "response": 1}
 '''
 
-filename = 'results/' + 'responses_20240329180546' + '.csv'
+filename = 'results/' + 'responses_20240401165655' + '.csv'
 
 data_array = [[] for i in range(7)]
 
@@ -55,7 +55,7 @@ lapse_rate = test_controller.engine.post_mean['lapse_rate']
 sigma = 1 / slope
 
 # Define the range of x values for which we want to compute the CDF
-x = np.linspace(-3*sigma + threshold, 3*sigma + threshold, 1000)
+x = np.linspace(-4, 4, 1000)
 
 # Compute the Gaussian CDF
 cdf = norm.cdf(x, loc=threshold, scale=sigma)
